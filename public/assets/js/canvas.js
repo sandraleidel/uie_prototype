@@ -60,6 +60,22 @@ function change_color(new_color, button) {
 
 
 /**
+ * ändert ausgewählte Größe
+ * @param new_size - Radius
+ * @param button
+ */
+
+function change_size(new_size, button) {
+    r = new_size;
+    let size_buttons = document.getElementsByClassName("size");
+    for (let i = 0; i < size_buttons.length; i++) {
+        size_buttons[i].style.borderWidth = '2px';
+    }
+    button.style.borderWidth = '4px';
+}
+
+
+/**
  * Zeichnet Kreis auf Canvas
  */
 
