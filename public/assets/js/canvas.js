@@ -44,6 +44,25 @@ function position_handler(event) {
 
 
 /**
+ * Ändert Modus zwischen Zeichnen (1), Füllen (2) und Form-Modus (3)
+ * @param new_mode
+ * @param button
+ **/
+
+function change_mode(new_mode, button) {
+    mode = new_mode;
+    let mode_buttons = document.getElementsByClassName("mode");
+    for (let i = 0; i < mode_buttons.length; i++) {
+        mode_buttons[i].style.borderWidth = '2px';
+    }
+    button.style.borderWidth = '4px';
+    if(mode == 3) {
+        alert("Formenfenster öffnen");
+    }
+}
+
+
+/**
  * Ändert ausgewählte Farbe
  * @param new_color
  * @param button

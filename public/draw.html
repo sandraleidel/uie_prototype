@@ -10,9 +10,9 @@
             <button id="save"></button>
             <button id="cancel"></button>
             <button id="undo"></button>
-            <button id="paint" class="mode"></button>
-            <button id="fill" class="mode"></button>
-            <button id="shape" class="mode"></button>
+            <button id="paint" class="mode" onclick="change_mode(1, this)"></button>
+            <button id="fill" class="mode" onclick="change_mode(2, this)"></button>
+            <button id="shape" class="mode" onclick="change_mode(3, this)"></button>
             <button id="xs" class="size" onclick="change_size(8, this)"></button>
             <button id="s" class="size" onclick="change_size(10, this)"></button>
             <button id="m" class="size" onclick="change_size(12, this)"></button>
