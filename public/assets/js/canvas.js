@@ -44,6 +44,22 @@ function position_handler(event) {
 
 
 /**
+ * Ändert ausgewählte Farbe
+ * @param new_color
+ * @param button
+ */
+
+function change_color(new_color, button) {
+    color = new_color;
+    let color_buttons = document.getElementsByClassName("color");
+    for (let i = 0; i < color_buttons.length; i++) {
+        color_buttons[i].style.borderWidth = '2px';
+    }
+    button.style.borderWidth = '4px';
+}
+
+
+/**
  * Zeichnet Kreis auf Canvas
  */
 
