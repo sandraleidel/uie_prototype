@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>UIE-prototype</title>
     <link href="assets/css/style.css" rel="stylesheet">
-    <script src="assets/js/canvas.js"></script>
 </head>
+
 <body class="wrapper">
     <header>
-        <div>
+        <div id="buttonWrapperMode" class="button-wrapper">
             <button id="save"></button>
             <button id="cancel"></button>
             <button id="undo"></button>
@@ -22,7 +23,7 @@
             <button id="xl" class="size" onclick="change_size(16, this)"></button>
         </div>
 
-        <div>
+        <div id="buttonWrapperColor" class="button-wrapper">
             <button id="white" class="color" onclick="change_color('#ffffff', this)"></button>
             <button id="yellow" class="color" onclick="change_color('#ffff00', this)"></button>
             <button id="orange" class="color" onclick="change_color('#ff9900', this)"></button>
@@ -38,7 +39,10 @@
 
     </header>
     <main>
-        <canvas id="canvas" width="972" height="700"></canvas>
     </main>
+
+    <script src="assets/js/canvas.js"></script>
+    <script src="assets/js/init.js"></script>
 </body>
+
 </html>
