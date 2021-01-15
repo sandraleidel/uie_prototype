@@ -1,3 +1,7 @@
+:root {
+    --button-size: 6.5vw;
+}
+
 body {
     width: calc(100vw - 16px);
     height: calc(100vh - 16px - 4px);
@@ -38,8 +42,8 @@ canvas {
 }
 
 button {
-    width: 5vw;
-    height: 5vw;
+    width: var(--button-size);
+    height: var(--button-size);
     display: flex;
     padding: 1vw;
     margin: 8px;
@@ -81,9 +85,10 @@ button.active {
 }
 
 /* Media Query for tablets */
-@media (max-width: 43em) {
+@media (orientation: portrait) and (max-width: 43em),
+    (orientation: landscape) and (max-height: 43em) {
     body {
-        background-color: #aa0000;
+        background-color: #ffeaea;
     }
     #sizeWarning {
         display: block;
@@ -96,17 +101,21 @@ button.active {
 /* Media Query for small displays */
 @media (min-width: 62em) {
     body {
-        background-color: #00aa00;
+        background-color: #eaffea;
     }
 }
 /* Media Query for large displays */
 @media (min-width: 82em) {
     body {
-        background-color: #0000aa;
+        background-color: #eaeaff;
     }
 }
 
 @media (orientation: landscape) {
+    :root {
+        --button-size: 6.5vh;
+    }
+
     body {
         flex-direction: row;
     }
@@ -117,11 +126,6 @@ button.active {
 
     .button-wrapper {
         flex-direction: column;
-    }
-
-    button {
-        width: 5vh;
-        height: 5vh;
     }
 }
 
