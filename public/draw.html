@@ -8,14 +8,28 @@
 </head>
 
 <body class="wrapper">
+    <div id="sizeWarning">
+        Diese Anwendung ist nicht für den Einsatz auf kleinen Bildschirmen (Smartphones)
+        optimiert.
+    </div>
     <header>
+
         <div id="buttonWrapperMode" class="button-wrapper">
-            <button id="save"></button>
-            <button id="cancel"></button>
-            <button id="undo"></button>
-            <button id="paint" class="mode" onclick="change_mode(1, this)"></button>
-            <button id="fill" class="mode" onclick="change_mode(2, this)"></button>
-            <button id="shape" class="mode" onclick="change_mode(3, this)"></button>
+            <button id="save">
+                <img src="./assets/icons/check.svg" />
+            </button>
+            <button id="cancel">
+                <img src="./assets/icons/cross.svg" />
+            </button>
+            <button id="undo">
+                <img src="./assets/icons/undo.svg" />
+            </button>
+            <button id="paint" class="mode" onclick="change_mode(1, this)">
+                <img src="./assets/icons/brush.svg" /></button>
+            <button id="fill" class="mode" onclick="change_mode(2, this)">
+                <img src="./assets/icons/fill.svg" /></button>
+            <button id="shape" class="mode" onclick="change_mode(3, this)">
+                <img src="./assets/icons/star.svg" /></button>
             <button id="xs" class="size" onclick="change_size(8, this)"></button>
             <button id="s" class="size" onclick="change_size(10, this)"></button>
             <button id="m" class="size" onclick="change_size(12, this)"></button>
