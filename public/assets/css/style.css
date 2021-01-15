@@ -10,10 +10,14 @@ body {
     padding: 8px;
 }
 
-header,
-main {
+header {
     background-color: white;
-    border: 1px solid black;
+}
+
+main {
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 header {
@@ -37,13 +41,21 @@ button {
     width: 5vw;
     height: 5vw;
     display: flex;
-    padding: 0.5vw;
+    padding: 1vw;
     margin: 8px;
-
+    border: none;
+    background-color: white;
     border-radius: 40px;
-    border: 2px solid black;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
 
-    color: black;
+button:active,
+button:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23), 0 3px 6px rgba(0, 0, 0, 0.36);
+}
+
+button.active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .button-wrapper {
@@ -127,7 +139,6 @@ button {
 
 #m {
     background-size: 24px;
-    border-width: 4px;
 }
 
 #l {
@@ -146,7 +157,6 @@ button {
 
 #yellow {
     background-color: #ffff00;
-    border-width: 4px;
 }
 
 #orange {
