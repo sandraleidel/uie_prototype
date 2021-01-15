@@ -71,10 +71,6 @@ button.active {
     background-color: white;
 }
 
-#paint {
-    border-width: 4px;
-}
-
 /* Media Query for tablets */
 @media (max-width: 43em) {
     body {
@@ -147,50 +143,4 @@ button.active {
 
 #xl {
     background-size: 32px;
-}
-
-/***** Color-Buttons *****/
-
-#white {
-    background-color: #ffffff;
-}
-
-#yellow {
-    background-color: #ffff00;
-}
-
-#orange {
-    background-color: #ff9900;
-}
-
-#red {
-    background-color: #ff0000;
-}
-
-#pink {
-    background-color: deeppink;
-}
-
-#violet {
-    background-color: blueviolet;
-}
-
-#blue {
-    background-color: dodgerblue;
-}
-
-#sky {
-    background-color: deepskyblue;
-}
-
-#turquoise {
-    background-color: aquamarine;
-}
-
-#green {
-    background-color: lawngreen;
-}
-
-#greenyellow {
-    background-color: greenyellow;
 }
