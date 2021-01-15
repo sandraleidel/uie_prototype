@@ -1,8 +1,8 @@
 /** Globale Variablen **/
 var x, y;                       // Position der Maus
-var r = 10;                     // Radius der gezeichneten Punkte
+var activeBrushSize;                     // Radius der gezeichneten Punkte
 var draw = false;
-var color = '#ffff00';          // aktuell ausgewählte Farbe
+var activeColor;          // aktuell ausgewählte Farbe
 var mode = 1;                   // 1 - paint; 2 - fill; 3 - shape
 
 /** Event-Handler **/
@@ -67,7 +67,7 @@ function change_mode(new_mode, activeButton) {
  */
 
 function change_color(new_color, activeButton) {
-    color = new_color;
+    activeColor = new_color;
     let color_buttons = document.querySelectorAll(".color");
     color_buttons.forEach(button => button.classList.remove("active"));
     activeButton.classList.add("active");
@@ -81,7 +81,7 @@ function change_color(new_color, activeButton) {
  */
 
 function change_size(new_size, activeButton) {
-    r = new_size;
+    activeBrushSize = new_size;
     let size_buttons = document.querySelectorAll(".size");
     size_buttons.forEach(button => button.classList.remove("active"));
     activeButton.classList.add("active");
@@ -96,8 +96,8 @@ function draw_circle() {
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext("2d");
     context.beginPath();
-    context.arc(x, y, r, 0, Math.PI * 2, false);
-    context.fillStyle = color;
+    context.arc(x, y, activeBrushSize, 0, Math.PI * 2, false);
+    context.fillStyle = activeColor;
     context.fill();
 }
 
@@ -109,5 +109,5 @@ function draw_circle() {
 
 function fill() {
     let canvas = document.getElementById('canvas');
-    canvas.style.backgroundColor = color;
+    canvas.style.backgroundColor = activeColor;
 }

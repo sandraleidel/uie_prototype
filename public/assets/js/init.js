@@ -7,7 +7,10 @@ colors.forEach(color => {
     const button = document.createElement("button");
     button.id = color.name;
     button.classList.add("color");
-    color.active && button.classList.add("active");
+    if (color.active) {
+        button.classList.add("active");
+        activeColor = color.code;
+    }
     button.onclick = () => { change_color(color.code, button) };
 
     buttonWrapperColor.append(button);
@@ -16,7 +19,10 @@ brushes.forEach(brush => {
     const button = document.createElement("button");
     button.id = brush.name;
     button.classList.add("size");
-    brush.active && button.classList.add("active");
+    if (brush.active) {
+        button.classList.add("active");
+        activeBrushSize = brush.size;
+    }
     button.onclick = () => { change_size(brush.size, button) };
 
     buttonWrapperMode.append(button);
