@@ -10,6 +10,7 @@ const brushes = [
     {
         name: 'm',
         size: 12,
+        active: true,
     },
     {
         name: 'l',

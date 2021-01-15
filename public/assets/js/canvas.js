@@ -46,17 +46,15 @@ function position_handler(event) {
 /**
  * Ändert Modus zwischen Zeichnen (1), Füllen (2) und Form-Modus (3)
  * @param new_mode
- * @param button
+ * @param activeButton
  **/
 
-function change_mode(new_mode, button) {
+function change_mode(new_mode, activeButton) {
     mode = new_mode;
-    let mode_buttons = document.getElementsByClassName("mode");
-    for (let i = 0; i < mode_buttons.length; i++) {
-        mode_buttons[i].style.borderWidth = '2px';
-    }
-    button.style.borderWidth = '4px';
-    if(mode == 3) {
+    let mode_buttons = document.querySelectorAll(".mode");
+    mode_buttons.forEach(button => button.classList.remove("active"));
+    activeButton.classList.add("active");
+    if (mode == 3) {
         alert("Formenfenster öffnen");
     }
 }
@@ -65,32 +63,28 @@ function change_mode(new_mode, button) {
 /**
  * Ändert ausgewählte Farbe
  * @param new_color
- * @param button
+ * @param activeButton
  */
 
-function change_color(new_color, button) {
+function change_color(new_color, activeButton) {
     color = new_color;
-    let color_buttons = document.getElementsByClassName("color");
-    for (let i = 0; i < color_buttons.length; i++) {
-        color_buttons[i].style.borderWidth = '2px';
-    }
-    button.style.borderWidth = '4px';
+    let color_buttons = document.querySelectorAll(".color");
+    color_buttons.forEach(button => button.classList.remove("active"));
+    activeButton.classList.add("active");
 }
 
 
 /**
  * ändert ausgewählte Größe
  * @param new_size - Radius
- * @param button
+ * @param activeButton
  */
 
-function change_size(new_size, button) {
+function change_size(new_size, activeButton) {
     r = new_size;
-    let size_buttons = document.getElementsByClassName("size");
-    for (let i = 0; i < size_buttons.length; i++) {
-        size_buttons[i].style.borderWidth = '2px';
-    }
-    button.style.borderWidth = '4px';
+    let size_buttons = document.querySelectorAll(".size");
+    size_buttons.forEach(button => button.classList.remove("active"));
+    activeButton.classList.add("active");
 }
 
 

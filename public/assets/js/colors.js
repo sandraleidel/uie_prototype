@@ -6,6 +6,7 @@ const colors = [
     {
         name: 'yellow',
         code: '#ffff00',
+        active: true,
     },
     {
         name: 'orange',
