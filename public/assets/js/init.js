@@ -6,7 +6,7 @@ const canvas = document.createElement('canvas');
 colors.forEach(color => {
     const button = document.createElement("button");
     button.id = color.name;
-    button.classList.add("color");
+    button.classList.add("btn-color");
     if (color.active) {
         button.classList.add("active");
         activeColor = color.code;
@@ -18,7 +18,7 @@ colors.forEach(color => {
 brushes.forEach(brush => {
     const button = document.createElement("button");
     button.id = brush.name;
-    button.classList.add("size");
+    button.classList.add("btn-size");
     if (brush.active) {
         button.classList.add("active");
         activeBrushSize = brush.size;

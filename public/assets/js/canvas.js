@@ -51,7 +51,7 @@ function position_handler(event) {
 
 function change_mode(new_mode, activeButton) {
     mode = new_mode;
-    let mode_buttons = document.querySelectorAll(".mode");
+    let mode_buttons = document.querySelectorAll(".btn-mode");
     mode_buttons.forEach(button => button.classList.remove("active"));
     activeButton.classList.add("active");
     if (mode == 3) {
@@ -68,7 +68,7 @@ function change_mode(new_mode, activeButton) {
 
 function change_color(new_color, activeButton) {
     activeColor = new_color;
-    let color_buttons = document.querySelectorAll(".color");
+    let color_buttons = document.querySelectorAll(".btn-color");
     color_buttons.forEach(button => button.classList.remove("active"));
     activeButton.classList.add("active");
 }
@@ -82,7 +82,7 @@ function change_color(new_color, activeButton) {
 
 function change_size(new_size, activeButton) {
     activeBrushSize = new_size;
-    let size_buttons = document.querySelectorAll(".size");
+    let size_buttons = document.querySelectorAll(".btn-size");
     size_buttons.forEach(button => button.classList.remove("active"));
     activeButton.classList.add("active");
 }
