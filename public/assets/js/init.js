@@ -7,6 +7,7 @@ colors.forEach(color => {
     const button = document.createElement("button");
     button.id = color.name;
     button.classList.add("btn-color");
+    color.code === "#ffffff" ? button.style.color = "#000000" : button.style.color = color.code;
     button.style.backgroundColor = color.code;
     if (color.active) {
         button.classList.add("active");
