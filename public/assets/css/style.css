@@ -57,6 +57,10 @@ button {
     background-color: white;
 }
 
+#paint {
+    border-width: 4px;
+}
+
 /* Media Query for tablets */
 @media (max-width: 43em) {
     body {
