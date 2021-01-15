@@ -85,8 +85,13 @@ button {
 /* Media Query for large displays */
 @media (min-width: 82em) {
     body {
-        flex-direction: row;
         background-color: #0000aa;
+    }
+}
+
+@media (orientation: landscape) {
+    body {
+        flex-direction: row;
     }
 
     header {
@@ -95,6 +100,11 @@ button {
 
     .button-wrapper {
         flex-direction: column;
+    }
+
+    button {
+        width: 5vh;
+        height: 5vh;
     }
 }
 
