@@ -28,5 +28,6 @@
 
 ## Authors
 
-* Sandra Leidel - *Prototype Development* - [sandraleidel](github.com/sandraleidel)
-* Vincent Thiele - *Prototype Development* - [vvvt](github.com/vvvt)
+* Sandra Leidel - *Prototype Development* - [sandraleidel](https://github.com/sandraleidel)
+* Vincent Thiele - *Prototype Development* - [vvvt](https://github.com/vvvt)
+
