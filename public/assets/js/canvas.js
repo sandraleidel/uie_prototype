@@ -20,9 +20,8 @@ const buttonModeShape = document.querySelector("#btnModeShape");
 
 let currentPosition = { x: 0, y: 0 };
 
-document.addEventListener('mousemove', draw);
-document.addEventListener('mousedown', updatePosition);
-document.addEventListener('mouseenter', updatePosition);
+c.addEventListener('touchmove', draw);
+c.addEventListener('touchstart', updatePosition);
 
 buttonSave.addEventListener("click", () => alert("Save Artwork"))
 buttonCancel.addEventListener("click", () => alert("Cancel Editing"))
@@ -83,8 +82,8 @@ function changeSize(newBrushSize, activeButton) {
  * @param {object} e event
  */
 function updatePosition(e) {
-	currentPosition.x = e.pageX - canvas.offsetLeft;
-	currentPosition.y = e.pageY - canvas.offsetTop;
+	currentPosition.x = e.touches[0].pageX - canvas.offsetLeft;
+	currentPosition.y = e.touches[0].pageY - canvas.offsetTop;
 }
 
 /**
@@ -93,7 +92,6 @@ function updatePosition(e) {
  * @param {object} e event
  */
 function draw(e) {
-	if (e.buttons !== 1) return;
 	ctx.beginPath();
 	ctx.lineWidth = activeBrushSize;
 	ctx.lineCap = 'round';
