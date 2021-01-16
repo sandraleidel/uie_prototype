@@ -11,11 +11,25 @@ init();
 const c = document.getElementById('canvas');
 const ctx = c.getContext('2d');
 
+const buttonSave = document.querySelector("#btnSave");
+const buttonCancel = document.querySelector("#btnCancel");
+const buttonUndo = document.querySelector("#btnUndo");
+const buttonModePaint = document.querySelector("#btnModePaint");
+const buttonModeFill = document.querySelector("#btnModeFill");
+const buttonModeShape = document.querySelector("#btnModeShape");
+
 let currentPosition = { x: 0, y: 0 };
 
 document.addEventListener('mousemove', draw);
 document.addEventListener('mousedown', updatePosition);
 document.addEventListener('mouseenter', updatePosition);
+
+buttonSave.addEventListener("click", () => alert("Save Artwork"))
+buttonCancel.addEventListener("click", () => alert("Cancel Editing"))
+buttonUndo.addEventListener("click", () => alert("Undo last Step"))
+buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint))
+buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill))
+buttonModeShape.addEventListener("click", () => changeMode(3, buttonModeShape))
 
 /**
  * Set active mode (1) drawing, (2) filling, (3) shapes
