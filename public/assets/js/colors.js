@@ -1,47 +1,47 @@
 const colors = [
     {
-        name: 'white',
+        name: 'White',
         code: '#ffffff',
     },
     {
-        name: 'yellow',
+        name: 'Yellow',
         code: '#ffff00',
         active: true,
     },
     {
-        name: 'orange',
+        name: 'Orange',
         code: '#ff9900',
     },
     {
-        name: 'red',
+        name: 'Red',
         code: '#ff0000',
     },
     {
-        name: 'pink',
+        name: 'Pink',
         code: '#ff1493',
     },
     {
-        name: 'violet',
+        name: 'Violet',
         code: '#8A2BE2',
     },
     {
-        name: 'blue',
+        name: 'Blue',
         code: '#1E90FF',
     },
     {
-        name: 'sky',
+        name: 'Sky',
         code: '#00BFFF',
     },
     {
-        name: 'turquoise',
+        name: 'Turquoise',
         code: '#7FFFD4',
     },
     {
-        name: 'greenyellow',
+        name: 'Greenyellow',
         code: '#ADFF2F',
     },
     {
-        name: 'green',
+        name: 'Green',
         code: '#7CFC00',
     },
 ];
