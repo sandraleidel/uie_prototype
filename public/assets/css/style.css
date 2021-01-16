@@ -45,7 +45,7 @@ button {
     width: var(--button-size);
     height: var(--button-size);
     display: flex;
-    padding: 1vw;
+    padding: calc(var(--button-size) / 5);
     margin: 8px;
     border: none;
     background-color: white;
@@ -69,6 +69,12 @@ button.active {
 
 .btn-color.active {
     box-shadow: 0 6px 14px currentColor;
+}
+
+.btn-size {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../img/circle.svg);
 }
 
 .button-wrapper {
@@ -127,13 +133,4 @@ button.active {
     .button-wrapper {
         flex-direction: column;
     }
-}
-
-/***** Size-Buttons *****/
-
-.btn-size {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 35px;
-    background-image: url(../img/circle.svg);
 }
