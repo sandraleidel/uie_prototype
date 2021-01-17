@@ -1,4 +1,4 @@
-const main = document.querySelector('main');
+const main = document.querySelector('#canvasContainer');
 const buttonWrapperColor = document.querySelector('#buttonWrapperColor');
 const buttonWrapperMode = document.querySelector('#buttonWrapperMode');
 const canvas = document.createElement('canvas');
