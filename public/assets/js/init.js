@@ -1,6 +1,7 @@
 const main = document.querySelector('#canvasContainer');
 const buttonWrapperColor = document.querySelector('#buttonWrapperColor');
 const buttonWrapperMode = document.querySelector('#buttonWrapperMode');
+const shapeGallery = document.querySelector('#shapeGallery');
 const canvas = document.createElement('canvas');
 
 function init() {
@@ -39,6 +40,14 @@ function init() {
 
 		buttonWrapperMode.append(button);
 	});
+	shapes.forEach(shape => {
+		const div = document.createElement("div");
+		const img = document.createElement("img");
+		img.id = `shape_${shape.name}`
+		img.src = shape.img;
+		div.append(img);
+		shapeGallery.append(div);
+	})
 
 	canvas.id = 'canvas';
 	canvas.width = main.clientWidth;

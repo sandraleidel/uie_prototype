@@ -94,7 +94,6 @@ function changeSize(newBrushSize, activeButton) {
  * @param {object} e event
  */
 function updatePosition(e) {
-	console.log(e);
 	currentPosition.x = e.touches[0].pageX - canvas.offsetLeft;
 	currentPosition.y = e.touches[0].pageY - canvas.offsetTop;
 }
@@ -105,7 +104,6 @@ function updatePosition(e) {
  * @param {object} e event
  */
 function draw(e) {
-	console.log(e);
 	ctx.beginPath();
 	ctx.lineWidth = activeBrushSize;
 	ctx.lineCap = 'round';
