@@ -62,13 +62,17 @@ main > section > section {
     flex-basis: content;
 }
 
-#shapeGallery > div {
-    background: white;
+.shape-gallery-entry {
+    background: aliceblue;
     display: flex;
     flex-direction: column;
     width: 27%;
     margin: 2%;
-    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.shape-gallery-entry.active {
+    background: rgb(170, 215, 255);
 }
 
 .hidden {

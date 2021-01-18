@@ -41,11 +41,17 @@ function init() {
 		buttonWrapperMode.append(button);
 	});
 	shapes.forEach(shape => {
-		const div = document.createElement("div");
-		const img = document.createElement("img");
+		const div = document.createElement('div');
+		const img = document.createElement('img');
 		img.id = `shape_${shape.name}`
 		img.src = shape.img;
 		div.append(img);
+		div.classList.add('shape-gallery-entry')
+		div.addEventListener('click', () => {
+			const activeGalleryElements = document.querySelector('.shape-gallery-entry.active');
+			activeGalleryElements && activeGalleryElements.classList.remove('active');
+			div.classList.add('active');
+		});
 		shapeGallery.append(div);
 	})
 
