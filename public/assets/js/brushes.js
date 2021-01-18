@@ -5,19 +5,19 @@ const brushes = [
     },
     {
         name: 's',
-        size: 10,
+        size: 12,
     },
     {
         name: 'm',
-        size: 12,
+        size: 16,
         active: true,
     },
     {
         name: 'l',
-        size: 14,
+        size: 20,
     },
     {
         name: 'xl',
-        size: 16,
+        size: 24,
     },
 ]

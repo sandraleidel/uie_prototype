@@ -28,7 +28,7 @@ function init() {
 		const button = document.createElement('button');
 		button.id = `btnBrush${brush.name.toUpperCase()}`;
 		button.classList.add('btn-size');
-		button.style.backgroundSize = `${2 * brush.size}px`;
+		button.style.backgroundSize = `${brush.size}px`;
 		if (brush.active) {
 			button.classList.add('active');
 			activeBrushSize = brush.size;
