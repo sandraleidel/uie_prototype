@@ -17,18 +17,30 @@ const buttonUndo = document.querySelector("#btnUndo");
 const buttonModePaint = document.querySelector("#btnModePaint");
 const buttonModeFill = document.querySelector("#btnModeFill");
 const buttonModeShape = document.querySelector("#btnModeShape");
+const buttonShapeAccept = document.querySelector("#btnShapeAccept");
+const buttonShapeCancel = document.querySelector("#btnShapeCancel");
+
+const shapeModal = document.querySelector("#shapeModal");
+const canvasContainer = document.querySelector("#canvasContainer");
 
 let currentPosition = { x: 0, y: 0 };
 
-c.addEventListener('touchmove', draw);
-c.addEventListener('touchstart', updatePosition);
+canvasContainer.addEventListener('touchmove', draw);
+canvasContainer.addEventListener('touchstart', updatePosition);
 
-buttonSave.addEventListener("click", () => alert("Save Artwork"))
-buttonCancel.addEventListener("click", () => alert("Cancel Editing"))
-buttonUndo.addEventListener("click", () => alert("Undo last Step"))
-buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint))
-buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill))
-buttonModeShape.addEventListener("click", () => changeMode(3, buttonModeShape))
+buttonSave.addEventListener("click", () => alert("Save Artwork"));
+buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
+buttonUndo.addEventListener("click", () => alert("Undo last Step"));
+buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint));
+buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill));
+buttonModeShape.addEventListener("click", () => toggleShapeModal());
+buttonShapeAccept.addEventListener("click", () => toggleShapeModal());
+buttonShapeCancel.addEventListener("click", () => toggleShapeModal());
+
+function toggleShapeModal() {
+	shapeModal.classList.toggle("hidden");
+	canvasContainer.classList.toggle("hidden");
+}
 
 /**
  * Set active mode (1) drawing, (2) filling, (3) shapes
