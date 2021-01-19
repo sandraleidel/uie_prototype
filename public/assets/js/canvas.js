@@ -26,7 +26,7 @@ const canvasContainer = document.querySelector("#canvasContainer");
 let currentPosition = { x: 0, y: 0 };
 
 canvasContainer.addEventListener('touchmove', draw);
-canvasContainer.addEventListener('touchstart', updatePosition);
+canvasContainer.addEventListener('touchstart', handleCanvasTouch);
 
 buttonSave.addEventListener("click", () => alert("Save Artwork"));
 buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
@@ -86,6 +86,19 @@ function changeSize(newBrushSize, activeButton) {
 
 	activeBrushSize = newBrushSize;
 	activeButton.classList.add('active');
+}
+
+function handleCanvasTouch(e) {
+	switch (activeMode) {
+		case 1:
+			updatePosition(e);
+			break;
+		case 2:
+			fill();
+			break;
+		default:
+			break;
+	}
 }
 
 /**
