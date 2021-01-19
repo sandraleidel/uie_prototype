@@ -16,25 +16,43 @@ body {
 }
 
 header {
+    display: flex;
+    flex-basis: content;
+    flex-direction: column;
     background-color: white;
 }
 
 main {
+    flex-grow: 1;
+    padding: 0;
     border-radius: 2px;
+    overflow: hidden;
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-header {
-    flex-basis: content;
+.display {
+    box-shadow: none;
     display: flex;
-    flex-direction: column;
 }
 
-main {
-    padding: 0;
-    flex-grow: 1;
-    overflow: hidden;
+#designGallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+#designGallery div {
+    background: aliceblue;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 10px;
 }
 
 main > section {
