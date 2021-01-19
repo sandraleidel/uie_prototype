@@ -25,10 +25,10 @@ const canvasContainer = document.querySelector("#canvasContainer");
 
 let currentPosition = { x: 0, y: 0 };
 
-canvasContainer.addEventListener('touchmove', draw);
 canvasContainer.addEventListener('touchstart', handleCanvasTouch);
+canvasContainer.addEventListener('touchmove', handleCanvasMove);
 
-buttonSave.addEventListener("click", () => alert("Save Artwork"));
+buttonSave.addEventListener("click", () => window.location.href = './index.html');
 buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
 buttonUndo.addEventListener("click", () => alert("Undo last Step"));
 buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint));
@@ -88,6 +88,11 @@ function changeSize(newBrushSize, activeButton) {
 	activeButton.classList.add('active');
 }
 
+/**
+ * Handle a touchstart event on the canvas. Decide what to do depending on the current mode.
+ * 
+ * @param {object} e event
+ */
 function handleCanvasTouch(e) {
 	switch (activeMode) {
 		case 1:
@@ -95,6 +100,23 @@ function handleCanvasTouch(e) {
 			break;
 		case 2:
 			fill();
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ * Handle a touchmove event on the canvas. Decide what to do depending on the current mode.
+ * 
+ * @param {object} e event
+ */
+function handleCanvasMove(e) {
+	switch (activeMode) {
+		case 1:
+			draw(e);
+			break;
+		case 2:
 			break;
 		default:
 			break;
