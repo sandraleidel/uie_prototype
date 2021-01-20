@@ -4,7 +4,6 @@
 // 1 - paint; 2 - fill; 3 - shape
 let activeMode = 1;
 let activeColor;
-let activeBrushSize;
 let canvas;
 
 buildInterface();
@@ -23,8 +22,6 @@ const buttonShapeCancel = document.querySelector("#btnShapeCancel");
 
 const shapeModal = document.querySelector("#shapeModal");
 const canvasContainer = document.querySelector("#canvasContainer");
-
-let currentPosition = { x: 0, y: 0 };
 
 buttonSave.addEventListener("click", () => window.location.href = './index.html');
 buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
@@ -51,6 +48,9 @@ function buildInterface() {
 	newCanvas.height = canvasContainer.clientHeight;
 	canvasContainer.append(newCanvas);
 	canvas = new fabric.Canvas('canvas');
+	canvas.allowTouchScrolling = false;
+	canvas.fireRightClick = false;
+	canvas.selection = false;
 
 	// Place brush size buttons
 	fetch('./assets/js/brushes.json')
@@ -122,86 +122,45 @@ function toggleShapeModal() {
 }
 
 /**
- * Set active mode (1) drawing, (2) filling, (3) shapes
+ * Set active mode (1) drawing, (2) filling
  *
- * @param newMode selected mode
+ * @param mode selected mode
  * @param activeButton pressed button, to be set active
  */
-function changeMode(newMode, activeButton) {
+function changeMode(mode, activeButton) {
 	const modeButtons = document.querySelectorAll('.btn-mode');
 	modeButtons.forEach(button => button.classList.remove('active'));
 
-	activeMode = newMode;
+	activeMode = mode;
 	activeButton.classList.add('active');
-
-	if (activeMode === 3) {
-		alert('Formenfenster öffnen');
-	}
 }
 
 /**
  * Set active color
  *
- * @param newColor selected color
+ * @param color selected color
  * @param activeButton pressed button, to be set active
  */
-function changeColor(newColor, activeButton) {
+function changeColor(color, activeButton) {
 	const colorButtons = document.querySelectorAll('.btn-color');
 	colorButtons.forEach(button => button.classList.remove('active'));
 
-	canvas.freeDrawingBrush.color = newColor;
-
-	//activeColor = newColor;
+	canvas.freeDrawingBrush.color = color;
 	activeButton.classList.add('active');
 }
 
 /**
  * Set active brush size
  *
- * @param newBrushSize selected brush size
+ * @param brushSize selected brush size
  * @param activeButton pressed button, to be set active
  */
-function changeSize(newBrushSize, activeButton) {
+function changeSize(brushSize, activeButton) {
 	const sizeButtons = document.querySelectorAll('.btn-size');
 	sizeButtons.forEach(button => button.classList.remove('active'));
 
-	activeBrushSize = newBrushSize;
+	canvas.freeDrawingBrush.width = brushSize;
 	activeButton.classList.add('active');
-}
-
-/**
- * Handle a touchstart event on the canvas. Decide what to do depending on the current mode.
- * 
- * @param {object} e event
- */
-function handleCanvasTouch(e) {
-	switch (activeMode) {
-		case 1:
-			updatePosition(e);
-			break;
-		case 2:
-			fill();
-			break;
-		default:
-			break;
-	}
-}
-
-/**
- * Handle a touchmove event on the canvas. Decide what to do depending on the current mode.
- * 
- * @param {object} e event
- */
-function handleCanvasMove(e) {
-	switch (activeMode) {
-		case 1:
-			draw(e);
-			break;
-		case 2:
-			break;
-		default:
-			break;
-	}
 }
 
 /**
