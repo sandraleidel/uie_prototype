@@ -10,6 +10,19 @@ init();
 
 const c = document.getElementById('canvas');
 const ctx = c.getContext('2d');
+// create a wrapper around native canvas element (with id="c")
+var canvas = new fabric.Canvas('canvas');
+
+// create a rectangle object
+var rect = new fabric.Rect({
+	fill: 'red',
+	width: 20,
+	height: 20
+});
+
+// "add" rectangle onto canvas
+console.log(rect);
+canvas.add(rect);
 
 const buttonSave = document.querySelector("#btnSave");
 const buttonCancel = document.querySelector("#btnCancel");

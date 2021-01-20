@@ -2,7 +2,6 @@ const main = document.querySelector('#canvasContainer');
 const buttonWrapperColor = document.querySelector('#buttonWrapperColor');
 const buttonWrapperMode = document.querySelector('#buttonWrapperMode');
 const shapeGallery = document.querySelector('#shapeGallery');
-const canvas = document.createElement('canvas');
 
 function init() {
 	fetch('./assets/js/brushes.json')
@@ -62,9 +61,9 @@ function init() {
 			shapeGallery.append(div);
 		}));
 
+	const canvas = document.createElement('canvas');
 	canvas.id = 'canvas';
 	canvas.width = main.clientWidth;
 	canvas.height = main.clientHeight;
-
 	main.append(canvas);
 }
