@@ -5,24 +5,12 @@
 let activeMode = 1;
 let activeColor;
 let activeBrushSize;
+let canvas;
 
 buildInterface();
 
 const c = document.getElementById('canvas');
 const ctx = c.getContext('2d');
-// create a wrapper around native canvas element (with id="c")
-var canvas = new fabric.Canvas('canvas');
-
-// create a rectangle object
-var rect = new fabric.Rect({
-	fill: 'red',
-	width: 20,
-	height: 20
-});
-
-// "add" rectangle onto canvas
-console.log(rect);
-canvas.add(rect);
 
 const buttonSave = document.querySelector("#btnSave");
 const buttonCancel = document.querySelector("#btnCancel");
@@ -37,9 +25,6 @@ const shapeModal = document.querySelector("#shapeModal");
 const canvasContainer = document.querySelector("#canvasContainer");
 
 let currentPosition = { x: 0, y: 0 };
-
-canvasContainer.addEventListener('touchstart', handleCanvasTouch);
-canvasContainer.addEventListener('touchmove', handleCanvasMove);
 
 buttonSave.addEventListener("click", () => window.location.href = './index.html');
 buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
@@ -59,6 +44,15 @@ function buildInterface() {
 	const shapeGallery = document.querySelector('#shapeGallery');
 	const canvasContainer = document.querySelector("#canvasContainer");
 
+	// Place canvas according to container size
+	const newCanvas = document.createElement('canvas');
+	newCanvas.id = 'canvas';
+	newCanvas.width = canvasContainer.clientWidth;
+	newCanvas.height = canvasContainer.clientHeight;
+	canvasContainer.append(newCanvas);
+	canvas = new fabric.Canvas('canvas');
+
+	// Place brush size buttons
 	fetch('./assets/js/brushes.json')
 		.then(response => response.json())
 		.then(brushes => brushes.forEach(brush => {
@@ -68,7 +62,7 @@ function buildInterface() {
 			button.style.backgroundSize = `${brush.size}px`;
 			if (brush.active) {
 				button.classList.add('active');
-				activeBrushSize = brush.size;
+				canvas.freeDrawingBrush.width = brush.size;
 			}
 			button.onclick = () => {
 				changeSize(brush.size, button);
@@ -76,6 +70,7 @@ function buildInterface() {
 			buttonWrapperMode.append(button);
 		}));
 
+	// Place brush color buttons
 	fetch('./assets/js/colors.json')
 		.then(response => response.json())
 		.then(colors => colors.forEach(color => {
@@ -90,7 +85,7 @@ function buildInterface() {
 			button.style.backgroundColor = color.code;
 			if (color.active) {
 				button.classList.add('active');
-				activeColor = color.code;
+				canvas.freeDrawingBrush.color = color.code;
 			}
 			button.onclick = () => {
 				changeColor(color.code, button);
@@ -99,6 +94,7 @@ function buildInterface() {
 			buttonWrapperColor.append(button);
 		}));
 
+	// Populate shape menu
 	fetch('./assets/js/shapes.json')
 		.then(response => response.json())
 		.then(shapes => shapes.forEach(shape => {
@@ -115,12 +111,6 @@ function buildInterface() {
 			});
 			shapeGallery.append(div);
 		}));
-
-	const canvas = document.createElement('canvas');
-	canvas.id = 'canvas';
-	canvas.width = canvasContainer.clientWidth;
-	canvas.height = canvasContainer.clientHeight;
-	canvasContainer.append(canvas);
 }
 
 /**
@@ -159,7 +149,9 @@ function changeColor(newColor, activeButton) {
 	const colorButtons = document.querySelectorAll('.btn-color');
 	colorButtons.forEach(button => button.classList.remove('active'));
 
-	activeColor = newColor;
+	canvas.freeDrawingBrush.color = newColor;
+
+	//activeColor = newColor;
 	activeButton.classList.add('active');
 }
 
@@ -210,34 +202,6 @@ function handleCanvasMove(e) {
 		default:
 			break;
 	}
-}
-
-/**
- * Update mouse position
- *
- * @param {object} e event
- */
-function updatePosition(e) {
-	currentPosition.x = e.touches[0].pageX - canvas.offsetLeft;
-	currentPosition.y = e.touches[0].pageY - canvas.offsetTop;
-}
-
-/**
- * Draw line in canvas
- *
- * @param {object} e event
- */
-function draw(e) {
-	ctx.beginPath();
-	ctx.lineWidth = activeBrushSize;
-	ctx.lineCap = 'round';
-	ctx.strokeStyle = activeColor;
-
-	ctx.moveTo(currentPosition.x, currentPosition.y);
-	updatePosition(e);
-	ctx.lineTo(currentPosition.x, currentPosition.y);
-
-	ctx.stroke();
 }
 
 /**
