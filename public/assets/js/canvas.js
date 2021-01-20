@@ -3,7 +3,6 @@
 // Global Vars
 // 1 - paint; 2 - fill; 3 - shape
 let activeMode = 1;
-let activeColor;
 let canvas;
 
 buildInterface();
@@ -35,6 +34,8 @@ buttonModeShape.addEventListener("click", () => {
 buttonShapeAccept.addEventListener("click", appendShape);
 buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
+canvasContainer.addEventListener("click",(e) => {if(activeMode == 2) {fill();}});
+
 /**
  * Set up interface components by adding buttons and a canvas.
  */
@@ -55,6 +56,7 @@ function buildInterface() {
 	canvas.fireRightClick = false;
 	canvas.selection = false;
 	canvas.isDrawingMode = true;
+	canvas.backgroundColor = "#ffffff";
 
 	// Place brush size buttons
 	fetch('./assets/js/brushes.json')
@@ -142,7 +144,20 @@ function changeMode(mode, activeButton) {
 			break;
 		case 2:
 			canvas.isDrawingMode = false;
-			canvas.getObjects().forEach(object => object.selectable = false)
+			canvas.getObjects().forEach(object => {
+				object.lockMovementX = true;
+				object.lockMovementY = true;
+				object.lockRotation = true;
+				object.lockScalingX = true;
+				object.lockScalingY	= true;
+				object.hasBorders = false;
+				object.hasControls = false;
+				object.perPixelTargetFind = true;
+				if(object.fill == null) {
+					object.set("fill", canvas.backgroundColor);
+				}
+			});
+			canvas.requestRenderAll();
 			console.log("switched to mode 2");
 			break;
 		case 3:
@@ -185,12 +200,17 @@ function changeSize(brushSize, activeButton) {
 }
 
 /**
- * Change background color
- * TODO: implement fill algorithm
+ * Changes fill-color of selected path
+ * or background-color if no path selected
  */
 function fill() {
-	const canvas = document.getElementById('canvas');
-	canvas.style.backgroundColor = activeColor;
+	let shape = canvas.getActiveObject();
+	if(shape == null) {
+		canvas.backgroundColor = canvas.freeDrawingBrush.color;
+	} else {
+		shape.set("fill", canvas.freeDrawingBrush.color);
+	}
+	canvas.requestRenderAll();
 }
 
 /**
