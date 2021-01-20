@@ -28,9 +28,9 @@ buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
 buttonUndo.addEventListener("click", () => alert("Undo last Step"));
 buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint));
 buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill));
-buttonModeShape.addEventListener("click", () => toggleShapeModal());
-buttonShapeAccept.addEventListener("click", () => toggleShapeModal());
-buttonShapeCancel.addEventListener("click", () => toggleShapeModal());
+buttonModeShape.addEventListener("click", toggleShapeModal);
+buttonShapeAccept.addEventListener("click", appendShape);
+buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
 /**
  * Set up interface components by adding buttons and a canvas.
@@ -170,4 +170,26 @@ function changeSize(brushSize, activeButton) {
 function fill() {
 	const canvas = document.getElementById('canvas');
 	canvas.style.backgroundColor = activeColor;
+}
+
+/**
+ * 
+ */
+function appendShape() {
+	const selectedShape = document.querySelector(".shape-gallery-entry.active img");
+	selectedShape && console.log(selectedShape);
+
+	fabric.loadSVGFromURL(selectedShape.src, shapes => {
+		let shape = new fabric.Group(shapes.filter(s => s.fill));
+		console.log(shapes.filter(s => s.fill));
+		shape.id = `object_${selectedShape.id}`;
+		shape.selectable = false;
+		shape.scaleY = 20;
+		shape.scaleX = 20;
+		//oImg.hasControls = false;
+		canvas.setActiveObject(shape);
+		canvas.add(shape);
+	})
+
+	toggleShapeModal()
 }
