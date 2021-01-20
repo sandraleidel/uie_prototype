@@ -50,6 +50,9 @@ buttonModeShape.addEventListener("click", () => toggleShapeModal());
 buttonShapeAccept.addEventListener("click", () => toggleShapeModal());
 buttonShapeCancel.addEventListener("click", () => toggleShapeModal());
 
+/**
+ * Set up interface components by adding buttons and a canvas.
+ */
 function buildInterface() {
 	const buttonWrapperColor = document.querySelector('#buttonWrapperColor');
 	const buttonWrapperMode = document.querySelector('#buttonWrapperMode');
@@ -120,6 +123,9 @@ function buildInterface() {
 	canvasContainer.append(canvas);
 }
 
+/**
+ * Toggle visibility of the shape menu
+ */
 function toggleShapeModal() {
 	shapeModal.classList.toggle("hidden");
 	canvasContainer.classList.toggle("hidden");
