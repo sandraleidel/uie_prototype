@@ -34,7 +34,8 @@ buttonModeShape.addEventListener("click", () => {
 buttonShapeAccept.addEventListener("click", appendShape);
 buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
-canvasContainer.addEventListener("click",(e) => {if(activeMode == 2) {fill();}});
+canvasContainer.addEventListener("click",() => {if(activeMode == 2) {fill();}});
+canvasContainer.addEventListener("touchstart",() => {if(activeMode == 2) {fill();}});
 
 /**
  * Set up interface components by adding buttons and a canvas.
