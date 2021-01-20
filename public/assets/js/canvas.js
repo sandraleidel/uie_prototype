@@ -28,7 +28,10 @@ buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
 buttonUndo.addEventListener("click", () => alert("Undo last Step"));
 buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint));
 buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill));
-buttonModeShape.addEventListener("click", toggleShapeModal);
+buttonModeShape.addEventListener("click", () => {
+	changeMode(3, buttonModeShape);
+	toggleShapeModal();
+});
 buttonShapeAccept.addEventListener("click", appendShape);
 buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
@@ -51,6 +54,7 @@ function buildInterface() {
 	canvas.allowTouchScrolling = false;
 	canvas.fireRightClick = false;
 	canvas.selection = false;
+	canvas.isDrawingMode = true;
 
 	// Place brush size buttons
 	fetch('./assets/js/brushes.json')
@@ -130,6 +134,23 @@ function toggleShapeModal() {
 function changeMode(mode, activeButton) {
 	const modeButtons = document.querySelectorAll('.btn-mode');
 	modeButtons.forEach(button => button.classList.remove('active'));
+
+	switch (mode) {
+		case 1:
+			canvas.isDrawingMode = true;
+			console.log("switched to mode 1");
+			break;
+		case 2:
+			canvas.isDrawingMode = false;
+			canvas.getObjects().forEach(object => object.selectable = false)
+			console.log("switched to mode 2");
+			break;
+		case 3:
+			canvas.isDrawingMode = false;
+			canvas.getObjects().forEach(object => object.selectable = false)
+			console.log("switched to mode 3");
+			break;
+	}
 
 	activeMode = mode;
 	activeButton.classList.add('active');
