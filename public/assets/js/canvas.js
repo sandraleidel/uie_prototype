@@ -34,7 +34,7 @@ buttonModeShape.addEventListener("click", () => {
 buttonShapeAccept.addEventListener("click", appendShape);
 buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
-canvasContainer.addEventListener("click",() => {if(activeMode == 2) {fill();}});
+canvasContainer.addEventListener("click",(e) => {if(activeMode == 2) {pixellauf(e.layerX, e.layerY);}});
 canvasContainer.addEventListener("touchstart",() => {if(activeMode == 2) {fill();}});
 
 /**
@@ -235,4 +235,64 @@ function appendShape() {
 	})
 
 	toggleShapeModal()
+}
+
+function pixellauf(x, y) {
+	var idata = ctx.getImageData(0, 0, c.width, c.height);
+	var index = getIndex(x,y);
+	console.log(idata.data[index]);
+	console.log(index);
+	var oldColor = [idata.data[index], idata.data[index+1], idata.data[index+2]];
+	console.log(oldColor);
+	var newColor = getColor(new fabric.Color(canvas.freeDrawingBrush.color).toRgb());
+	if (oldColor == newColor) {
+		return;
+	}
+	var queue = [];
+	queue.push({x: x, y: y});
+	while (queue.length != 0) {
+		var pixel = queue.pop();
+		for(j of [0, 1, -1]) {
+			var k = j;
+			index = getIndex(pixel.x + k, pixel.y);
+			color = [idata.data[index], idata.data[index+1], idata.data[index+2]];
+			while (similar(color, oldColor)) {
+				for (i of [0, 1, 2]) {
+					idata.data[index + i] = newColor[i];
+				}
+				for(l of [-1,1]) {
+					var newPixel = {x: pixel.x + k, y: pixel.y + l};
+					index = getIndex(newPixel.x, newPixel.y);
+					color = [idata.data[index], idata.data[index+1], idata.data[index+2]];
+					if(similar(color, oldColor)) {
+						queue.push(newPixel);
+					}
+				}
+
+				k += j;
+				index = getIndex(pixel.x + k, pixel.y);
+				color = [idata.data[index], idata.data[index+1], idata.data[index+2]];
+			}
+		}
+
+	}
+	var index = getIndex(x,y);
+	console.log(idata.data[index]);
+	ctx.putImageData(idata, 0, 0);
+}
+
+function getColor(rgb) {
+	rgb = rgb.substring(4, rgb.length-1).replace(/ /g, '').split(',');
+	return rgb
+}
+
+function getIndex(x,y) {
+	return (c.width * y + x) * 4;
+}
+
+function similar(c1, c2) {
+	var d = Math.sqrt(Math.pow(c1[0] - c2[0], 2) + Math.pow(c1[1] - c2[1], 2) + Math.pow(c1[2] - c2[2], 2));
+	if (d < 50) {
+		return true;
+	}
 }
