@@ -34,8 +34,8 @@ buttonModeShape.addEventListener("click", () => {
 buttonShapeAccept.addEventListener("click", appendShape);
 buttonShapeCancel.addEventListener("click", toggleShapeModal);
 
-canvasContainer.addEventListener("click",() => {if(activeMode == 2) {fill();}});
-canvasContainer.addEventListener("touchstart",() => {if(activeMode == 2) {fill();}});
+canvasContainer.addEventListener("click",(e) => {if(activeMode == 2) {fill(e.layerX, e.layerY);}});
+canvasContainer.addEventListener("touchstart",(e) => {if(activeMode == 2) {fill(e.layerX, e.layerY);}});
 
 /**
  * Set up interface components by adding buttons and a canvas.
@@ -207,12 +207,24 @@ function changeSize(brushSize, activeButton) {
  * Changes fill-color of selected path
  * or background-color if no path selected
  */
-function fill() {
+function fill(x,y) {
 	let shape = canvas.getActiveObject();
 	if(shape == null) {
 		canvas.backgroundColor = canvas.freeDrawingBrush.color;
 	} else {
-		shape.set("fill", canvas.freeDrawingBrush.color);
+		if(shape.fill == shape.stroke) {
+			shape.set("fill", canvas.freeDrawingBrush.color);
+			shape.set("stroke", canvas.freeDrawingBrush.color);
+		}
+
+		let pixel = ctx.getImageData(x, y, 1, 1).data;
+		let pixelColor = new fabric.Color('rgb(' + pixel[0] + ',' + pixel[1] + ',' + pixel[2] + ')').toHex();
+		let strokeColor = new fabric.Color(shape.stroke).toHex();
+		if (pixelColor == strokeColor) {
+			shape.set("stroke", canvas.freeDrawingBrush.color);
+		} else {
+			shape.set("fill", canvas.freeDrawingBrush.color);
+		}
 	}
 	canvas.requestRenderAll();
 }
