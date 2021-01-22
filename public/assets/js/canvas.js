@@ -23,7 +23,7 @@ const shapeModal = document.querySelector("#shapeModal");
 const canvasContainer = document.querySelector("#canvasContainer");
 
 buttonSave.addEventListener("click", () => window.location.href = './index.html');
-buttonCancel.addEventListener("click", () => alert("Cancel Editin;g"));
+buttonCancel.addEventListener("click", () => alert("Cancel Editing"));
 buttonUndo.addEventListener("click", () => alert("Undo last Step"));
 buttonModePaint.addEventListener("click", () => changeMode(1, buttonModePaint));
 buttonModeFill.addEventListener("click", () => changeMode(2, buttonModeFill));
@@ -107,10 +107,10 @@ function buildInterface() {
 		.then(shapes => shapes.forEach(shape => {
 			const div = document.createElement('div');
 			const img = document.createElement('img');
-			img.id = `shape_${shape.name}`
+			img.id = `shape_${shape.name}`;
 			img.src = shape.img;
 			div.append(img);
-			div.classList.add('shape-gallery-entry')
+			div.classList.add('shape-gallery-entry');
 			div.addEventListener('click', () => {
 				const activeGalleryElements = document.querySelector('.shape-gallery-entry.active');
 				activeGalleryElements && activeGalleryElements.classList.remove('active');
@@ -163,7 +163,7 @@ function changeMode(mode, activeButton) {
 			break;
 		case 3:
 			canvas.isDrawingMode = false;
-			canvas.getObjects().forEach(object => object.selectable = false)
+			canvas.getObjects().forEach(object => object.selectable = false);
 			console.log("switched to mode 3");
 			if(canvas.freeDrawingBrush.color == canvas.backgroundColor) {
 				alert("Achtung: Die ausgewählte Farbe und die Hintergrundfarbe sind gleich.");
@@ -230,7 +230,7 @@ function fill(x,y) {
 }
 
 /**
- * 
+ * Adds selected icon to canvas
  */
 function appendShape() {
 	const selectedShape = document.querySelector(".shape-gallery-entry.active img");
@@ -249,7 +249,7 @@ function appendShape() {
 			canvas.setActiveObject(shape);
 			canvas.add(shape);
 		}
-	})
+	});
 
 	toggleShapeModal()
 }
