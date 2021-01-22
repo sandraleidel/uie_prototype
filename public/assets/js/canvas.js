@@ -155,7 +155,7 @@ function changeMode(mode, activeButton) {
 				object.hasControls = false;
 				object.perPixelTargetFind = true;
 				if(object.fill == null) {
-					object.set("fill", canvas.backgroundColor);
+					object.set("fill", 'rgba(255,255,255,0.01)');
 				}
 			});
 			canvas.requestRenderAll();
