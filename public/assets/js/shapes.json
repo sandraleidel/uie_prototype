@@ -1,54 +1,58 @@
 [
     {
-        "name": "icons_brush",
-        "img": "./assets/icons/brush.svg"
+        "name": "star",
+        "img": "./assets/shapes/star.svg"
     },
     {
-        "name": "icons_check",
-        "img": "./assets/icons/check.svg"
+        "name": "heart",
+        "img": "./assets/shapes/heart.svg"
     },
     {
-        "name": "icons_cross",
-        "img": "./assets/icons/cross.svg"
+        "name": "paw",
+        "img": "./assets/shapes/paw.svg"
     },
     {
-        "name": "icons_fill",
-        "img": "./assets/icons/fill.svg"
+        "name": "dog",
+        "img": "./assets/shapes/dog.svg"
     },
     {
-        "name": "icons_star",
-        "img": "./assets/icons/star.svg"
+        "name": "cat",
+        "img": "./assets/shapes/cat.svg"
     },
     {
-        "name": "icons_undo",
-        "img": "./assets/icons/undo.svg"
+        "name": "horse",
+        "img": "./assets/shapes/horse.svg"
     },
     {
-        "name": "img_check",
-        "img": "./assets/img/check-solid.svg"
+        "name": "diplodocus",
+        "img": "./assets/shapes/diplodocus.svg"
     },
     {
-        "name": "img_circle",
-        "img": "./assets/img/circle.svg"
+        "name": "tyrannosaurus-rex",
+        "img": "./assets/shapes/tyrannosaurus-rex.svg"
     },
     {
-        "name": "img_fill",
-        "img": "./assets/img/fill-solid.svg"
+        "name": "dragon",
+        "img": "./assets/shapes/dragon.svg"
     },
     {
-        "name": "img_paint",
-        "img": "./assets/img/paint-brush-solid.svg"
+        "name": "football",
+        "img": "./assets/shapes/fussballvariante.svg"
     },
     {
-        "name": "img_plus",
-        "img": "./assets/img/plus-solid.svg"
+        "name": "rocket",
+        "img": "./assets/shapes/shuttle.svg"
     },
     {
-        "name": "img_star",
-        "img": "./assets/img/star-regular.svg"
+        "name": "teddy",
+        "img": "./assets/shapes/teddy-bear.svg"
     },
     {
-        "name": "img_undo",
-        "img": "./assets/img/undo-solid.svg"
+        "name": "doll",
+        "img": "./assets/shapes/doll.svg"
+    },
+    {
+        "name": "snowman",
+        "img": "./assets/shapes/snowman.svg"
     }
 ]

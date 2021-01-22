@@ -245,8 +245,8 @@ function appendShape() {
 			let shape = new fabric.Group(filteredShapes);
 			shape.id = `object_${selectedShape.id}`;
 			//shape.selectable = false;
-			shape.scaleY = 20;
-			shape.scaleX = 20;
+			shape.scaleY = 0.5;
+			shape.scaleX = 0.5;
 			//oImg.hasControls = false;
 			canvas.setActiveObject(shape);
 			canvas.add(shape);
