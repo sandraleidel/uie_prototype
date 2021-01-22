@@ -29,3 +29,9 @@ The usage of the Fetch API causes issues with Cross Origin Requests when develop
 * Sandra Leidel - *Prototype Development* - [sandraleidel](https://github.com/sandraleidel)
 * Vincent Thiele - *Prototype Development* - [vvvt](https://github.com/vvvt)
 
+## Souces
+
+* Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>,
+<a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a>, 
+<a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> and
+<a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
