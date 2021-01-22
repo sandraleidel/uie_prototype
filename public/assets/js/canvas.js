@@ -222,16 +222,18 @@ function appendShape() {
 	selectedShape && console.log(selectedShape);
 
 	fabric.loadSVGFromURL(selectedShape.src, shapes => {
-		shapes[1].set("fill", canvas.freeDrawingBrush.color);
-		let shape = new fabric.Group(shapes.filter(s => s.fill));
-		console.log(shapes.filter(s => s.fill));
-		shape.id = `object_${selectedShape.id}`;
-		//shape.selectable = false;
-		shape.scaleY = 20;
-		shape.scaleX = 20;
-		//oImg.hasControls = false;
-		canvas.setActiveObject(shape);
-		canvas.add(shape);
+		let filteredShapes = shapes.filter(s => s.fill);
+		if (filteredShapes.length > 0) {
+			filteredShapes[0].set("fill", canvas.freeDrawingBrush.color);
+			let shape = new fabric.Group(filteredShapes);
+			shape.id = `object_${selectedShape.id}`;
+			//shape.selectable = false;
+			shape.scaleY = 20;
+			shape.scaleX = 20;
+			//oImg.hasControls = false;
+			canvas.setActiveObject(shape);
+			canvas.add(shape);
+		}
 	})
 
 	toggleShapeModal()
