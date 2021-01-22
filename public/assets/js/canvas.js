@@ -204,8 +204,10 @@ function changeSize(brushSize, activeButton) {
 }
 
 /**
- * Changes fill-color of selected path
+ * Changes stroke- or fill-color of selected path
  * or background-color if no path selected
+ * @param x x-coordinate of clicked pixel
+ * @param y y-coordinate of clicked pixel
  */
 function fill(x,y) {
 	let shape = canvas.getActiveObject();
