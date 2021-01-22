@@ -165,6 +165,9 @@ function changeMode(mode, activeButton) {
 			canvas.isDrawingMode = false;
 			canvas.getObjects().forEach(object => object.selectable = false)
 			console.log("switched to mode 3");
+			if(canvas.freeDrawingBrush.color == canvas.backgroundColor) {
+				alert("Achtung: Die ausgewählte Farbe und die Hintergrundfarbe sind gleich.");
+			}
 			break;
 	}
 
